@@ -10,7 +10,9 @@ RUN apk --update --repository ${apk_repo} add ${apk_packages}
 
 COPY . .
 
+RUN sbcl --script ./test.lisp
+
 ENTRYPOINT ["tini", "--"]
 
-CMD ["sbcl", "--load", "src/class.lisp"]
+CMD ["sbcl", "--load", "./load.lisp"]
 
